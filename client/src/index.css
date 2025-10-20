@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* слегка приятный базовый фон/шрифт */
+:root {
+  color-scheme: light dark;
+}
+body {
+  @apply bg-zinc-50 text-zinc-900 antialiased;
+}
+.dark body {
+  @apply bg-zinc-900 text-zinc-50;
+}
