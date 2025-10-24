@@ -5,6 +5,7 @@ import { db } from "../db/sqlite";
 
 const router = Router();
 
+// POST /register — создаёт нового пользователя и сразу выдаёт ему токен.
 router.post("/register", (req, res) => {
   const { email, password } = req.body as { email?: string; password?: string };
   if (!email || !password)
@@ -31,6 +32,7 @@ router.post("/register", (req, res) => {
   }
 });
 
+// POST /login — проверяем пароль и возвращаем подпись с идентификатором пользователя.
 router.post("/login", (req, res) => {
   const { email, password } = req.body as { email?: string; password?: string };
   if (!email || !password)

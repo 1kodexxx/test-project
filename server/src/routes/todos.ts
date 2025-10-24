@@ -4,6 +4,7 @@ import { AuthRequest } from "../middleware/auth";
 
 const router = Router();
 
+// GET / — отдаём задачи только текущего пользователя (id взяли из токена).
 router.get("/", (req: AuthRequest, res) => {
   const rows = db
     .prepare("SELECT * FROM todos WHERE user_id = ? ORDER BY id DESC")
@@ -11,6 +12,7 @@ router.get("/", (req: AuthRequest, res) => {
   res.json(rows);
 });
 
+// POST / — создаём задачу и возвращаем свежую запись из базы.
 router.post("/", (req: AuthRequest, res) => {
   const { title } = req.body as { title?: string };
   if (!title) return res.status(400).json({ error: "title required" });
@@ -23,6 +25,7 @@ router.post("/", (req: AuthRequest, res) => {
   res.status(201).json(row);
 });
 
+// PATCH /:id — меняем флаг completed, приводим булево значение к 0/1.
 router.patch("/:id", (req: AuthRequest, res) => {
   const id = Number(req.params.id);
   const { completed } = req.body as { completed?: boolean };
@@ -41,6 +44,7 @@ router.patch("/:id", (req: AuthRequest, res) => {
   res.json(row);
 });
 
+// DELETE /:id — физически удаляем запись пользователя.
 router.delete("/:id", (req: AuthRequest, res) => {
   const id = Number(req.params.id);
   db.prepare("DELETE FROM todos WHERE id = ? AND user_id = ?").run(

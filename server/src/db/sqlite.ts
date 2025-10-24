@@ -3,9 +3,12 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const dbFile = process.env.DATABASE_FILE || "./data.sqlite";
+// Подключаемся к SQLite-файлу; better-sqlite3 работает синхронно, зато стабильно.
 export const db = new Database(dbFile);
+// WAL режим ускоряет запись и позволяет читать и писать параллельно.
 db.pragma("journal_mode = WAL");
 
+// Создаём таблицы пользователей и задач, если база ещё пустая.
 export function initSchema() {
   db.exec(`
     CREATE TABLE IF NOT EXISTS users (

@@ -1,10 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
+// Расширяем стандартный Request, чтобы потом удобно класть туда пользователя.
 export interface AuthRequest extends Request {
   user?: { id: number; email: string };
 }
 
+// Middleware проверяет JWT в заголовке Authorization и извлекает payload.
 export function authMiddleware(
   req: AuthRequest,
   res: Response,

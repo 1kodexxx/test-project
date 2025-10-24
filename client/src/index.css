@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* слегка приятный базовый фон/шрифт */
+/* (опционально для проверки) */
 :root {
   color-scheme: light dark;
 }

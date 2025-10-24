@@ -1,0 +1,29 @@
+{
+  // Подсветка и IntelliSense для Tailwind CSS
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+
+  // Автоматическое распознавание классов и директив Tailwind
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html",
+    "javascript": "javascript",
+    "javascriptreact": "javascript",
+    "typescript": "typescript",
+    "typescriptreact": "typescript"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
+  // Предотвращает жёлтые подчёркивания @apply и @tailwind
+  "emmet.includeLanguages": {
+    "css": "tailwindcss"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["tw`([^`]*)", "(?:className|class)=\"([^\"]*)\""]
+  ]
+}
