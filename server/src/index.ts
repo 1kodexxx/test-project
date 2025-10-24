@@ -7,6 +7,7 @@ import authRouter from "./routes/auth";
 import todosRouter from "./routes/todos";
 
 dotenv.config();
+
 // При запуске создаём таблицы базы, если они ещё не существуют.
 initSchema();
 
@@ -23,5 +24,5 @@ app.use("/api/todos", authMiddleware, todosRouter);
 
 const port = Number(process.env.PORT || 4000);
 app.listen(port, () =>
-  console.log(`�?: Server started: http://localhost:${port}`)
+  console.log(`✅ Server started: http://localhost:${port}`)
 );

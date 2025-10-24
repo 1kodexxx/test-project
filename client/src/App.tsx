@@ -63,7 +63,7 @@ function AuthPanel() {
 
   return (
     <div className="rounded-2xl border p-4 shadow-sm bg-white/60 dark:bg-zinc-900/60">
-      <h2 className="text-xl font-semibold mb-3">�?�?�'�?�?������Ő�?</h2>
+      <h2 className="text-xl font-semibold mb-3">Введите логин и пароль</h2>
       <div className="flex flex-col sm:flex-row gap-2 mb-2">
         <input
           className="border rounded px-3 py-2 flex-1"
@@ -81,20 +81,20 @@ function AuthPanel() {
       </div>
       <div className="flex gap-2">
         <button className="px-3 py-2 rounded border" onClick={register}>
-          Register
+          Регистрация
         </button>
         <button className="px-3 py-2 rounded border" onClick={login}>
-          Login
+          Логин
         </button>
         <button className="px-3 py-2 rounded border" onClick={logout}>
-          Logout
+          Выход
         </button>
       </div>
       <div className="text-sm mt-2">
-        Token: {token ? "�?: set" : "�?? not set"}
+        Token: {token ? "✅ установлен" : "❌ не установлен"}
       </div>
       {error && (
-        <div className="text-sm text-rose-600 mt-1">Error: {error}</div>
+        <div className="text-sm text-rose-600 mt-1">Ошибка: {error}</div>
       )}
     </div>
   );
@@ -162,24 +162,26 @@ function TodosPanel() {
 
   return (
     <div className="rounded-2xl border p-4 shadow-sm bg-white/60 dark:bg-zinc-900/60">
-      <h2 className="text-xl font-semibold mb-3">Todo (�����%��%��?�? JWT)</h2>
+      <h2 className="text-xl font-semibold mb-3">
+        Список задач (Todo, JWT авторизация)
+      </h2>
       <div className="flex gap-2 mb-3">
         <input
           className="border rounded px-3 py-2 flex-1"
-          placeholder="�?�?�?���? �����?���ؐ�"
+          placeholder="Введите задачу..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && add()}
         />
         <button className="px-3 py-2 rounded border" onClick={add}>
-          Add
+          Добавить
         </button>
         <button className="px-3 py-2 rounded border" onClick={load}>
-          Refresh
+          Обновить
         </button>
       </div>
-      {loading && <div className="text-sm opacity-70 mb-2">�-���?�?�?������?�</div>}
-      {err && <div className="text-sm text-rose-600 mb-2">Error: {err}</div>}
+      {loading && <div className="text-sm opacity-70 mb-2">Загрузка...</div>}
+      {err && <div className="text-sm text-rose-600 mb-2">Ошибка: {err}</div>}
       <ul className="space-y-1">
         {items.map((t) => (
           <li key={t.id} className="flex items-center gap-2">
@@ -195,12 +197,12 @@ function TodosPanel() {
               className="ml-auto text-rose-600 hover:underline"
               onClick={() => remove(t.id)}
             >
-              Delete
+              Удалить
             </button>
           </li>
         ))}
         {!items.length && !loading && (
-          <li className="opacity-60">�?�?��� ���?�?�'�?</li>
+          <li className="opacity-60">Список задач пуст</li>
         )}
       </ul>
     </div>
@@ -210,7 +212,9 @@ function TodosPanel() {
 export default function App() {
   return (
     <div className="mx-auto max-w-2xl p-4 space-y-4">
-      <h1 className="text-2xl font-bold">Fullstack Demo �� React + TS + Vite</h1>
+      <h1 className="text-2xl font-bold">
+        Fullstack Demo — React + TypeScript + Vite
+      </h1>
       <AuthPanel />
       <TodosPanel />
     </div>
